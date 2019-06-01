@@ -7,5 +7,7 @@ defmodule FootballWeb.Router do
 
   scope "/api", FootballWeb do
     pipe_through :api
+
+    resources "/matches", MatchController
   end
 end
