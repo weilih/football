@@ -11,5 +11,6 @@ defmodule FootballWeb.Router do
     resources "/matches", MatchController
 
     get "/league/:division/season/:season/matches", MatchController, :index
+    get "/league/:division/season/:season/results", ResultController, :index
   end
 end

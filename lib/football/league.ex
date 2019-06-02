@@ -6,7 +6,16 @@ defmodule Football.League do
   import Ecto.Query, warn: false
   alias Football.Repo
 
-  alias Football.League.Match
+  alias Football.League.{Match, Result}
+
+  @doc """
+  Returns the list of results.
+  """
+  def list_results(division, season) do
+    Result
+    |> where(division: ^division, season: ^season)
+    |> Repo.all()
+  end
 
   @doc """
   Returns the list of matches.
