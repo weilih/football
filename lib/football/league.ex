@@ -21,6 +21,12 @@ defmodule Football.League do
     Repo.all(Match)
   end
 
+  def list_matches(division, season) do
+    Match
+    |> where(division: ^division, season: ^season)
+    |> Repo.all()
+  end
+
   @doc """
   Gets a single match.
 

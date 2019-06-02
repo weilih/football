@@ -9,5 +9,7 @@ defmodule FootballWeb.Router do
     pipe_through :api
 
     resources "/matches", MatchController
+
+    get "/league/:division/season/:season/matches", MatchController, :index
   end
 end
