@@ -17,6 +17,11 @@ config :football, FootballWeb.Endpoint,
   render_errors: [view: FootballWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: Football.PubSub, adapter: Phoenix.PubSub.PG2]
 
+# Configures custom mime types
+config :mime, :types, %{
+  "application/protobuf" => ["proto"]
+}
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

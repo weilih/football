@@ -6,6 +6,15 @@ defmodule FootballWeb.MatchController do
 
   action_fallback FootballWeb.FallbackController
 
+  def index(%{private: %{phoenix_format: "proto"}} = conn,
+            %{"division" => division, "season" => season}) do
+    matches = League.list_matches(division, season)
+
+    conn
+    |> put_resp_content_type("application/protobuf", "binary")
+    |> render("matches.proto", matches: matches)
+  end
+
   def index(conn, %{"division" => division, "season" => season}) do
     matches = League.list_matches(division, season)
     render(conn, "index.json", matches: matches)
@@ -23,6 +32,14 @@ defmodule FootballWeb.MatchController do
       |> put_resp_header("location", Routes.match_path(conn, :show, match))
       |> render("show.json", match: match)
     end
+  end
+
+  def show(%{private: %{phoenix_format: "proto"}} = conn, %{"id" => id}) do
+    match = League.get_match!(id)
+
+    conn
+    |> put_resp_content_type("application/protobuf", "binary")
+    |> render("match.proto", match: match)
   end
 
   def show(conn, %{"id" => id}) do
