@@ -32,12 +32,6 @@ defmodule FootballWeb.MatchView do
     |> ProtobufMessages.Matches.encode()
   end
 
-  def render("match.proto", %{match: match}) do
-    match
-    |> parse_proto()
-    |> ProtobufMessages.Match.encode()
-  end
-
   defp parse_proto(match) do
     ProtobufMessages.Match.new(%{
       id: match.id,
