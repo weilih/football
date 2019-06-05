@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+message Results {
+  repeated Result results = 1;
+}
+
+message Result {
+  string division = 1;
+  string season = 2;
+
+  uint32 played = 3;
+  uint32 win = 4;
+  uint32 lose = 5;
+
+  uint32 goals_for = 6;
+  uint32 goals_againts = 7;
+  sint32 goals_diffs = 8;
+  uint32 points = 9;
+}

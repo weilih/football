@@ -1,6 +1,7 @@
 defmodule FootballWeb.ResultView do
   use FootballWeb, :view
   alias FootballWeb.ResultView
+  alias FootballWeb.ProtobufMessages
 
   def render("index.json", %{results: results}) do
     %{data: render_many(results, ResultView, "result.json")}
@@ -20,12 +21,12 @@ defmodule FootballWeb.ResultView do
 
   def render("results.proto", %{results: results}) do
     [results: Enum.map(results, &parse_proto/1)]
-    |> FootballWeb.Protobuf.Messages.Results.new()
-    |> FootballWeb.Protobuf.Messages.Results.encode()
+    |> ProtobufMessages.Results.new()
+    |> ProtobufMessages.Results.encode()
   end
 
   defp parse_proto(result) do
-    FootballWeb.Protobuf.Messages.Result.new(%{
+    ProtobufMessages.Result.new(%{
       division: result.division,
       season: result.season,
       played: result.played,
