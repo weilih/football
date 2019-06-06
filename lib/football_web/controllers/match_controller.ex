@@ -2,7 +2,6 @@ defmodule FootballWeb.MatchController do
   use FootballWeb, :controller
 
   alias Football.League
-  alias Football.League.Match
 
   action_fallback FootballWeb.FallbackController
 

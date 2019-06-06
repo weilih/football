@@ -5,6 +5,7 @@ defmodule Football.League.Result do
   schema "results" do
     field :division, :string
     field :season, :string
+    field :team, :string
 
     field :played, :integer
     field :win, :integer

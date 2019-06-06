@@ -11,6 +11,7 @@ defmodule FootballWeb.ResultView do
     %{division: result.division,
       season: result.season,
       played: result.played,
+      team: result.team,
       win: result.win,
       lose: result.lose,
       goals_for: result.goals_for,
@@ -29,6 +30,7 @@ defmodule FootballWeb.ResultView do
     ProtobufMessages.Result.new(%{
       division: result.division,
       season: result.season,
+      team: result.team,
       played: result.played,
       win: result.win,
       lose: result.lose,
