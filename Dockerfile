@@ -18,6 +18,3 @@ RUN mix local.rebar --force
 
 # Install Phoenix framework
 RUN mix archive.install --force https://github.com/phoenixframework/archives/raw/master/phx_new.ez
-
-# Compile the project
-RUN mix do compile
